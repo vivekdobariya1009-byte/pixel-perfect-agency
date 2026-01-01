@@ -9,6 +9,8 @@ import Services from "./pages/Services";
 import Training from "./pages/Training";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
+import AdminAuth from "./pages/AdminAuth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/training" element={<Training />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/auth" element={<AdminAuth />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
