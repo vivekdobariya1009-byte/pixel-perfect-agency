@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   MapPin, 
-  Phone, 
   Mail, 
   Linkedin, 
   Twitter, 
@@ -14,8 +13,8 @@ import {
 const footerLinks = {
   company: [
     { name: 'About Us', path: '/about' },
-    { name: 'Our Team', path: '/about#team' },
-    { name: 'Careers', path: '/contact' },
+    { name: 'Services', path: '/services' },
+    { name: 'Portfolio', path: '/portfolio' },
     { name: 'Contact', path: '/contact' },
   ],
   services: [
@@ -25,10 +24,8 @@ const footerLinks = {
     { name: 'IT Training', path: '/training' },
   ],
   resources: [
-    { name: 'Portfolio', path: '/portfolio' },
     { name: 'Training Programs', path: '/training' },
-    { name: 'Blog', path: '/contact' },
-    { name: 'FAQ', path: '/contact' },
+    { name: 'FAQ', path: '/#faq' },
   ],
 };
 
@@ -51,30 +48,28 @@ export const Footer = () => {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                 <span className="text-xl font-bold text-primary-foreground">S</span>
               </div>
-              <span className="text-xl font-bold font-display">Shunyekinfotech</span>
+              <span className="text-xl font-bold">Shunyek Infotech</span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-sm">
               Empowering businesses with cutting-edge technology solutions and training programs to thrive in the digital age.
             </p>
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span>Surat, Gujarat, India</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 text-primary" />
-                <span>+91 98765 43210</span>
+              <div className="flex items-start gap-3 text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <span>506- Shunyek Infotech, Blue Corporate House, Near Navjivan Hotel, Sarthana Jakat naka - Kamrej Road, Surat</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>info@shunyekinfotech.in</span>
+                <a href="mailto:info@shunyekinfotech.in" className="hover:text-primary transition-colors">
+                  info@shunyekinfotech.in
+                </a>
               </div>
             </div>
           </div>
 
           {/* Links Columns */}
           <div>
-            <h4 className="font-semibold font-display mb-4">Company</h4>
+            <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -91,7 +86,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold font-display mb-4">Services</h4>
+            <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
@@ -108,7 +103,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold font-display mb-4">Resources</h4>
+            <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
@@ -130,18 +125,18 @@ export const Footer = () => {
       <div className="border-t border-border/50">
         <div className="container-custom py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Shunyekinfotech. All rights reserved.
+            © {new Date().getFullYear()} Shunyek Infotech. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             {socialLinks.map((social) => (
               <motion.a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 rounded-lg bg-secondary/50 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors duration-200"
+                className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
                 aria-label={social.label}
               >
                 <social.icon className="w-4 h-4" />
