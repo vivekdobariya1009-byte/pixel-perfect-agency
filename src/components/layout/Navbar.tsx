@@ -39,7 +39,7 @@ export const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled 
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-background/20" 
+          ? "bg-background/80 ios-blur border-b border-border/50 shadow-sm" 
           : "bg-transparent"
       )}
     >
@@ -50,8 +50,8 @@ export const Navbar = () => {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
               <span className="text-xl font-bold text-primary-foreground">S</span>
             </div>
-            <span className="text-xl font-bold font-display hidden sm:block">
-              Shunyekinfotech
+            <span className="text-xl font-semibold hidden sm:block">
+              Shunyek Infotech
             </span>
           </Link>
 
@@ -62,10 +62,10 @@ export const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
+                  "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200",
                   location.pathname === item.path
                     ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                 )}
               >
                 {item.name}
@@ -86,7 +86,7 @@ export const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-secondary/50 transition-colors"
+            className="lg:hidden p-2 rounded-xl hover:bg-secondary transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -102,7 +102,7 @@ export const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-background/95 backdrop-blur-xl border-b border-border/50"
+            className="lg:hidden bg-background/95 ios-blur border-b border-border/50"
           >
             <div className="container-custom py-4 space-y-2">
               {navItems.map((item, index) => (
@@ -115,10 +115,10 @@ export const Navbar = () => {
                   <Link
                     to={item.path}
                     className={cn(
-                      "block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200",
+                      "block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200",
                       location.pathname === item.path
                         ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                     )}
                   >
                     {item.name}
