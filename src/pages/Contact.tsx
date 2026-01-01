@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 import { 
   MapPin, 
   Mail, 
@@ -62,22 +63,33 @@ const Contact = () => {
   const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true);
     
-    // Simulate API call - will be replaced with actual SMTP integration
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    console.log('Form data:', data);
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    toast({
-      title: 'Message Sent!',
-      description: 'We\'ll get back to you within 24 hours.',
-    });
+    try {
+      const { error } = await supabase.functions.invoke('submit-inquiry', {
+        body: data,
+      });
 
-    reset();
-    
-    setTimeout(() => setIsSubmitted(false), 3000);
+      if (error) throw error;
+
+      setIsSubmitted(true);
+      
+      toast({
+        title: 'Message Sent!',
+        description: 'We\'ll get back to you within 24 hours.',
+      });
+
+      reset();
+      
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (error: any) {
+      console.error('Error submitting inquiry:', error);
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to send message. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
